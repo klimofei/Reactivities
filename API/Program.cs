@@ -21,9 +21,10 @@ namespace API
         {
           var context = services.GetRequiredService<DataContext>();
           context.Database.Migrate();
-          var providerName = context.Database.ProviderName;
-          var logger = services.GetRequiredService<ILogger<Program>>();
-          logger.LogError($"Provider name: {providerName}");
+          Seed.SeedData(context);
+          // var providerName = context.Database.ProviderName;
+          // var logger = services.GetRequiredService<ILogger<Program>>();
+          // logger.LogError($"Provider name: {providerName}");
         }
         catch (Exception ex)
         {
